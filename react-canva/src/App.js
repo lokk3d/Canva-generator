@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import TestComponent from './components/TestComponent';
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,6 +18,7 @@ import LoggedNavBar from './components/navBar/LoggedNavBar';
 import Home from './components/homePage/Home';
 import { loadToken } from './components/authPage/authReducer';
 import CanvasPage from './components/canvas/CanvasPage';
+import ManualRedirectLogin from './components/ManualRedirectLogin';
 
 /*
 Cosa fa l'app? 
@@ -50,6 +50,9 @@ function App() {
             <Switch>
             <Route path="/app">
               <Home />
+            </Route>
+            <Route path="/login">
+              <ManualRedirectLogin />
             </Route>
             <Route path="/canvas/:id" component={CanvasPage} />
             </Switch>

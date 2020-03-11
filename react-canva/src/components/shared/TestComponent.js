@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Item from "./canvas/Item"
-import ComponentWrapper from "./canvas/ComponentWrapper";
+import Item from "../canvas/Item"
+import ComponentWrapper from "../canvas/ComponentWrapper";
 import { useDispatch, useSelector } from "react-redux"
-import EditableInputText from "../components/editableComponents/EditableInputText"
+import EditableInputText from "../editableComponents/EditableInputText"
 import { Button } from "@material-ui/core";
 /*
 Questo componente contiene solo "spazzatura", serve per fare i test dei vari presenter
@@ -23,7 +23,7 @@ function TestComponent(props) {
             />
             </strong>
 
-            <div style={{ display: "flex", flexWrap: "wrap", maxWidth: 1500 }}>
+            <div style={{ display: "flex", flexWrap: "wrap", maxWidth: 3500 }}>
 
                 <ComponentWrapper item={{ title: "Componente di test" }} >
                     <Item item={{ title: "Ciao", description: "Heiiii" }} />

@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import TestComponent from "../TestComponent";
 import EditableInputText from "../editableComponents/EditableInputText";
 import { useDispatch, useSelector } from "react-redux"
 import { updateCanva, fetchCanva } from "./canvaReducer"
 import { makeStyles } from '@material-ui/core/styles';
 import {Button} from "@material-ui/core"
 import Canva from "./Canva"
-import {generateId} from "./canvaServices"
 
 const useStyles = makeStyles(theme => ({
     col:{
@@ -53,7 +51,7 @@ function CanvasPage(props) {
                 onSave={(e) => updateCanvaTitle(e)}
                 fontSize={26} />
 
-            <div style={{display:"bloack", marginLeft:"10%", marginRight:"10%", maxWidth:900}}>
+            <div style={{display:"bloack", marginLeft:"5%", marginRight:"5%", maxWidth:1600}}>
                 <Canva 
                 components={canva.data.components}
                 onUpdate={(components)=>{

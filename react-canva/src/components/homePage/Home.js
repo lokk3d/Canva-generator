@@ -9,6 +9,8 @@ import { createNewCanva, deleteCanva, fetchCanvas } from "./canvaListReducer"
 import { useHistory } from "react-router-dom"
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import EmptyBox from "../shared/EmptyBox";
+import User from "../user/User"
+import { fetchUserData } from "../user/userReducer";
 
 const useStyles = makeStyles(theme => ({
 
@@ -48,6 +50,8 @@ function Home(props) {
     const dispatch = useDispatch()
 
     const canvas = useSelector(state => state.canvas)
+    const user = useSelector(state => state.user)
+
     const [canvasList, setCanvasList] = useState()
 
     const [openCanva, setOpenCanva] = useState(false)
@@ -58,6 +62,7 @@ function Home(props) {
 
     useEffect(() => {
         dispatch(fetchCanvas())
+        dispatch(fetchUserData())
     }, [])
 
 
@@ -89,10 +94,11 @@ function Home(props) {
 
     return (
         <div className={classes.main}>
-            <div className={classes.main}>
-                <Avatar className={classes.orange}>NC</Avatar>
-                <h3>Nome e cognome</h3>
-            </div>
+            <User 
+            firstName={user.firstName}
+            lastName={user.lastName}
+            email={user.email}
+            />
 
             <div className={classes.box} style={{ minWidth: 400 }}>
                 {

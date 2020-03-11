@@ -8,7 +8,7 @@ require("dotenv").config();
 router.route("/").get((req, res) => {
     const username = req.decoded.user;
 
-    User.findOne({ email: username })
+    User.findOne({ _id: username })
         .then(user => {
             res.status(200).json(user)
         })

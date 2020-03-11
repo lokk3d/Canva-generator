@@ -19,7 +19,8 @@ const canvaSchema = new Schema({
             items: [
                 {
                     title: String,
-                    description: String
+                    description: String,
+                    bgColor:String
                 }
             ]
         }
