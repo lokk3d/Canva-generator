@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from "react-redux"
 
 import { login } from "./authReducer"
 import { useHistory } from "react-router-dom"
-
+import bg from "../../assets/bg.jpg"
 
 function Copyright() {
     return (
@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
         height: '100vh',
     },
     image: {
-        backgroundImage: 'url(https://source.unsplash.com/random)',
+        backgroundImage: `url(${bg})`,
         backgroundRepeat: 'no-repeat',
         backgroundColor:
             theme.palette.type === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],

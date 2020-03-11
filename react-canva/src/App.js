@@ -19,6 +19,7 @@ import Home from './components/homePage/Home';
 import { loadToken } from './components/authPage/authReducer';
 import CanvasPage from './components/canvas/CanvasPage';
 import ManualRedirectLogin from './components/ManualRedirectLogin';
+import LandingPage from './components/homePage/LandingPage';
 
 /*
 Cosa fa l'app? 
@@ -68,7 +69,7 @@ function App() {
                   <Register />
                 </Route>
                 <Route path="/">
-                  <div>Home...</div>
+                  <LandingPage />
                 </Route>
               </Switch>
             </div>

@@ -77,7 +77,7 @@ function CanvasPage(props) {
 
             <Button
                 color="primary"
-                variant="contained"
+                variant="outlined"
                 style={{ margin: 30 }}
                 onClick={()=>setTemplatesOpen(true)}>
                 Carica schema template

@@ -76,7 +76,7 @@ export default function Register() {
 
 
     return (
-        <Container component="main" maxWidth="xs">
+        <Container component="main" maxWidth="xs" style={{backgroundColor:"#ffffff",borderRadius:10, boxShadow:"2px 2px 5px rgba(0,0,0,0.2)"}}>
             <CssBaseline />
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
