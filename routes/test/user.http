@@ -1,0 +1,24 @@
+GET http://localhost:5000/api/test
+
+###
+
+POST http://localhost:5000/api/signup
+content-type: application/json
+Authorization: Bearer passwordAmministratore
+
+{
+    "email": "admin@admin.com",
+    "password": "password",
+    "firstName":"Alf",
+    "lastName":"Gra"
+}
+
+###
+POST http://localhost:5000/api/login
+content-type: application/json
+Authorization: Bearer passwordAmministratore
+
+{
+    "email": "admin@admin.com",
+    "password": "password"
+}

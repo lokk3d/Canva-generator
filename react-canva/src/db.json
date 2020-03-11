@@ -1,0 +1,35 @@
+{
+    "canvas": [
+        {
+            "author":"id autore",
+            "title":"canvas de tu nonna",
+            "scheme": [
+                {
+                    "id":1,
+                    "name":"Problema",
+                    "description":"Descrizione del problema",
+                    "bgColor":"#ffffff",
+                    "position":{
+                        "row":0,
+                        "column":0
+                    },
+                    "items":[
+                        {
+                            "id":1,
+                            "title": "Problema1",
+                            "description":"Descrizione del problema",
+                            "bgColor":"#ffffff"
+                        },
+                        {
+                            "id":2,
+                            "title": "Problema2",
+                            "description":"Descrizione del problema",
+                            "bgColor":"#ffffff"
+                        }
+
+                    ]
+                }
+            ]
+        }
+    ]
+}
