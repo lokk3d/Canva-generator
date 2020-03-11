@@ -51,6 +51,9 @@ app.use("/api/user", middleware.checkToken, userRouter);
 const canvaRouter = require("./routes/canva"); 
 app.use("/api/canvas", middleware.checkToken, canvaRouter);
 
+const templateRouter = require("./routes/template"); 
+app.use("/api/templates", templateRouter);
+
 
 if(process.env.NODE_ENV === "production"){
     app.use(express.static("client/build"))

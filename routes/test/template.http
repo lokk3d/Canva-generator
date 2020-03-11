@@ -1,0 +1,21 @@
+GET http://localhost:5000/api/templates
+
+###
+
+POST http://localhost:5000/api/templates/add
+content-type: application/json
+
+{
+    "title": "Business Model Canvas",
+    "components": [
+        { "title":"Key Partners"},
+        { "title":"Key Activities"},
+        { "title":"Key Resources"},
+        { "title":"Value Proposition"},
+        { "title":"Customer Relationship"},
+        { "title":"Channels"},
+        { "title":"Customer Segments"},
+        { "title":"Cost Structure"},
+        { "title":"Revenue Streams"}
+    ]
+}

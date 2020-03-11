@@ -5,7 +5,8 @@ import { updateCanva, fetchCanva } from "./canvaReducer"
 import { makeStyles } from '@material-ui/core/styles';
 import {Button} from "@material-ui/core"
 import Canva from "./Canva"
-
+import TemplateDialogList from "../canvasTemplate/TemplateDialogList"
+import {fetchTemplates} from "../canvasTemplate/templateReducer"
 const useStyles = makeStyles(theme => ({
     col:{
         display:"flex",
@@ -20,6 +21,10 @@ function CanvasPage(props) {
 
 
     const canva = useSelector(state => state.canva)
+
+    const templates = useSelector(state => state.templates)
+    const [templatesOpen, setTemplatesOpen] = useState(false)
+
     const dispatch = useDispatch()
     const classes = useStyles();
 
@@ -27,6 +32,8 @@ function CanvasPage(props) {
 
     useEffect(() => {
         dispatch(fetchCanva(id))
+        dispatch(fetchTemplates())
+
     }, [])
 
     const updateCanvaTitle = (title) => {
@@ -67,6 +74,25 @@ function CanvasPage(props) {
                 onClick={()=>addNewWrapper()}>
                 Aggiungi board al canva
             </Button>
+
+            <Button
+                color="primary"
+                variant="contained"
+                style={{ margin: 30 }}
+                onClick={()=>setTemplatesOpen(true)}>
+                Carica schema template
+            </Button>
+
+            <TemplateDialogList 
+                templates={templates}
+                onClose={()=>setTemplatesOpen(false)}
+                open={templatesOpen}
+                onSave={(template)=>{
+                    setTemplatesOpen(false)
+                    updateCanvaComponents(template)
+                }}
+            />
+
         </div>
     )
 }
