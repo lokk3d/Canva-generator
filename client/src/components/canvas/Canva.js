@@ -10,7 +10,6 @@ const useStyles = makeStyles(theme => ({
     box: {
         borderRadius: 5,
         padding: 10,
-        margin: 10,
         boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.2)",
         backgroundColor: "#fff"
     },
