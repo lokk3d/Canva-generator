@@ -12,7 +12,7 @@ const initialState = {
 
 function Item({
     onUpdate = (item) => { console.log("I want to update this post: " + JSON.stringify(item)) },
-    onDelete = (item) => { console.log("I want to delete this post: " + item._id) },
+    onDelete = (id) => { console.log("I want to delete this post: " + id) },
     item = { title: "", description: "", bgColor: "#ffffff", _id: "defaultId" }
 }) {
 

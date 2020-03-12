@@ -25,7 +25,7 @@ function NewCanva({
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
         >
-            <DialogTitle id="alert-dialog-title">{"Titolo del Canva"}</DialogTitle>
+            <DialogTitle id="alert-dialog-title">{"Titolo della Canva"}</DialogTitle>
             <DialogContent>
                <TextField
                 value = {value}

@@ -4,7 +4,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 
 
@@ -56,6 +57,13 @@ function App() {
               <ManualRedirectLogin />
             </Route>
             <Route path="/canvas/:id" component={CanvasPage} />
+            <Route path="/" >
+            <Redirect
+              to={{
+                pathname: "/app",
+              }}
+            />
+            </Route>
             </Switch>
           </div>
           :

@@ -14,8 +14,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ImportExportIcon from '@material-ui/icons/ImportExport';
-import GTranslateIcon from '@material-ui/icons/GTranslate';
-import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 
 const useStyles = makeStyles({
   root: {
@@ -56,14 +54,14 @@ function LandingPage() {
             <ListItemIcon>
               <FavoriteIcon />
             </ListItemIcon>
-            <ListItemText primary="Crea e personalizza le tue canva" />
+            <ListItemText primary="Crea e personalizza le tue canvas" />
           </ListItem>
           <Divider />
           <ListItem button>
             <ListItemIcon>
               <ImportExportIcon />
             </ListItemIcon>
-            <ListItemText primary="Carica le canva di default dai template" />
+            <ListItemText primary="Carica le canvas di default dai template" />
           </ListItem>
           
         </List>
@@ -82,7 +80,7 @@ function LandingPage() {
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <Typography>
-              Questo tool ti permette di creare le tue canva personalizzate.
+              Questo tool ti permette di creare le tue canvas personalizzate.
               Puoi infatti aggiungere/modificare le varie board.
               In ogni board puoi aggiungere più post-it dei quali puoi modificare anche il colore di sfondo.
               Se non hai esigenze particolari puoi utilizzare i template già pronti :) 

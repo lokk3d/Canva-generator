@@ -100,14 +100,14 @@ function Home(props) {
             email={user.email}
             />
 
-            <div className={classes.box} style={{ minWidth: 400 }}>
+            <div className={classes.box} >
                 {
                     (canvas.data.length > 0)?
                     <List>
                         {canvasList}
                     </List>
                     :
-                    <EmptyBox label="Crea un nuovo canva per continuare"/>
+                    <EmptyBox label="Crea una canvas per continuare"/>
 
                 }
                 
@@ -118,7 +118,7 @@ function Home(props) {
                 color="primary"
                 onClick={() => setOpenCanva(true)}
             >
-                Crea nuovo canva
+                Crea nuova canvas
             </Button>
 
             <NewCanva

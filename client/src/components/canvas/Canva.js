@@ -80,7 +80,7 @@ function Canva({
                             {componentsList}
                         </List>
                         :
-                        <EmptyBox label="Aggiungi una board al canva"/>
+                        <EmptyBox label="Aggiungi una board alla canva"/>
                 }
 
             </div>

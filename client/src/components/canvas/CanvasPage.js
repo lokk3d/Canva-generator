@@ -72,7 +72,7 @@ function CanvasPage(props) {
                 variant="contained"
                 style={{ margin: 30 }}
                 onClick={()=>addNewWrapper()}>
-                Aggiungi board al canva
+                Aggiungi board alla canva
             </Button>
 
             <Button
