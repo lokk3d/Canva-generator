@@ -71,20 +71,22 @@ function Home(props) {
             setCanvasList(
                 canvas.data.map(item => {
                     return (
-                        <ListItem
-                            button
+                        <a
                             key={item._id}
-                            className={classes.entireRow}
-                            onClick={() => history.push("/canvas/" + item._id)}>
-                            <div>{item.title}</div>
-                            <ListItemSecondaryAction>
-                                <IconButton style={{ padding: 5 }}
-                                    onClick={() => dispatch(deleteCanva(item._id))}>
-                                    <DeleteOutlineIcon />
-                                </IconButton>
-                            </ListItemSecondaryAction>
+                            href="#"
+                            className="list-group-item d-flex justify-content-between align-items-center"
+                            >
+                            <div
+                            onClick={() => history.push("/canvas/" + item._id)}
+                            >{item.title}</div>
+                            <IconButton style={{ padding: 5, marginLeft: 20 }}
+                                onClick={() => dispatch(deleteCanva(item._id))}>
+                                <DeleteOutlineIcon />
+                            </IconButton>
 
-                        </ListItem>
+
+                        </a>
+
                     )
                 })
             )
@@ -94,32 +96,32 @@ function Home(props) {
 
     return (
         <div className={classes.main}>
-            <User 
-            firstName={user.firstName}
-            lastName={user.lastName}
-            email={user.email}
+            <User
+                firstName={user.firstName}
+                lastName={user.lastName}
+                email={user.email}
             />
 
             <div className={classes.box} >
                 {
-                    (canvas.data.length > 0)?
-                    <List>
-                        {canvasList}
-                    </List>
-                    :
-                    <EmptyBox label="Crea una canvas per continuare"/>
+                    (canvas.data.length > 0) ?
+                        <div className="list-group">
+                            {canvasList}
+                        </div>
+                        :
+                        <EmptyBox label="Crea una canvas per continuare" />
 
                 }
-                
+
             </div>
 
-            <Button
-                variant="contained"
-                color="primary"
+            <button 
+                type="button" 
+                class="btn btn-dark"
                 onClick={() => setOpenCanva(true)}
             >
                 Crea nuova canvas
-            </Button>
+            </button>
 
             <NewCanva
                 onSave={(e) => createCanva(e)}

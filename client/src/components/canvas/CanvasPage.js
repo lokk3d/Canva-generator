@@ -67,21 +67,18 @@ function CanvasPage(props) {
                 />
             </div>
 
-            <Button
-                color="primary"
-                variant="contained"
-                style={{ margin: 30 }}
+            <button
+               type="button" class="btn btn-primary"
+                style={{ marginTop: 30 }}
                 onClick={()=>addNewWrapper()}>
                 Aggiungi board alla canva
-            </Button>
+            </button>
 
-            <Button
-                color="primary"
-                variant="outlined"
-                style={{ margin: 30 }}
+            <button
+                 type="button" class="btn btn-link"
                 onClick={()=>setTemplatesOpen(true)}>
                 Carica schema template
-            </Button>
+            </button>
 
             <TemplateDialogList 
                 templates={templates}

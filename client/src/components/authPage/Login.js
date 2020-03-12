@@ -89,9 +89,9 @@ export default function SignInSide() {
                     <Avatar className={classes.avatar}>
                         <LockOutlinedIcon />
                     </Avatar>
-                    <Typography component="h1" variant="h5">
+                    <h1>
                         Sign in
-          </Typography>
+                    </h1>
                     <TextField
                         value={form.email}
                         onChange={(e)=>setForm({...form, email: e.target.value})}

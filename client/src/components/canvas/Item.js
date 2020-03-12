@@ -99,7 +99,6 @@ const styles = {
         padding: 10,
         boxShadow: "1px 1px 5px  rgba(0,0,0,0.20)",
         borderRadius: "2px",
-        width: "100%",
         cursor: 'context-menu'
     },
     row: {

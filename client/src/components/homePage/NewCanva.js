@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { TextField, Button } from "@material-ui/core";
+import {  Button } from "@material-ui/core";
 
 function NewCanva({
     onSave,
@@ -19,32 +18,42 @@ function NewCanva({
         <Dialog
             open={open}
             onClose={
-                ()=> {onClose();
-                setValue("")}
+                () => {
+                    onClose();
+                    setValue("")
                 }
+            }
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
         >
             <DialogTitle id="alert-dialog-title">{"Titolo della Canva"}</DialogTitle>
             <DialogContent>
-               <TextField
-                value = {value}
-                onChange= {(e)=>setValue(e.target.value)}
-                />
+                <div class="input-group mb-3">
+                 
+                    <input
+                        type="text" class="form-control"
+                        placeholder="Titolo" aria-label="Titolo"
+                        aria-describedby="basic-addon1"
+                        value={value}
+                        onChange={(e) => setValue(e.target.value)} />
+                </div>
+              
             </DialogContent>
             <DialogActions>
                 <Button onClick={
-                    ()=> {onClose();
-                    setValue("")}
-                    } color="primary">
+                    () => {
+                        onClose();
+                        setValue("")
+                    }
+                } color="primary">
                     Annulla
                 </Button>
-                <Button onClick={()=>{
+                <Button onClick={() => {
                     onSave(value)
                     setValue("")
                     onClose()
-                }} 
-                color="primary">
+                }}
+                    color="primary">
                     Salva
                 </Button>
             </DialogActions>

@@ -21,6 +21,7 @@ import { loadToken } from './components/authPage/authReducer';
 import CanvasPage from './components/canvas/CanvasPage';
 import ManualRedirectLogin from './components/ManualRedirectLogin';
 import LandingPage from './components/homePage/LandingPage';
+import NavBar from './components/navBar/NavBar';
 
 /*
 Cosa fa l'app? 
@@ -35,40 +36,47 @@ function App() {
   const auth = useSelector(state => state.auth)
   const dispatch = useDispatch()
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(loadToken())
-  },[])
+  }, [])
 
   return (
-    <div style={{backgroundColor:"rgba(0,0,0,0.1)", height:"100%"}}>
+    <div style={{ backgroundColor: "rgba(0,0,0,0.1)", height: "100%" }}>
       <Router>
-
-        {/* <TestComponent /> */}
 
         {
           (auth.loggedIn) ?
-          <div>
-            <LoggedNavBar />
-            <Switch>
-            <Route path="/app">
-              <Home />
-            </Route>
-            <Route path="/login">
-              <ManualRedirectLogin />
-            </Route>
-            <Route path="/canvas/:id" component={CanvasPage} />
-            <Route path="/" >
-            <Redirect
-              to={{
-                pathname: "/app",
-              }}
-            />
-            </Route>
-            </Switch>
-          </div>
-          :
-            <div>
+            <NavBar>
+              <LoggedNavBar />
+            </NavBar>
+            :
+            <NavBar>
               <NoLoggedNavBar />
+            </NavBar>
+        }
+
+        {
+          (auth.loggedIn) ?
+            <div>
+              <Switch>
+                <Route path="/app">
+                  <Home />
+                </Route>
+                <Route path="/login">
+                  <ManualRedirectLogin />
+                </Route>
+                <Route path="/canvas/:id" component={CanvasPage} />
+                <Route path="/" >
+                  <Redirect
+                    to={{
+                      pathname: "/app",
+                    }}
+                  />
+                </Route>
+              </Switch>
+            </div>
+            :
+            <div>
               <Switch>
                 <Route path="/login">
                   <Login />

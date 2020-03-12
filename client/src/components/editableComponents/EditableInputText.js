@@ -49,11 +49,13 @@ function EditableInputText({ value, onSave, label, fontSize }) {
             {
                (edit) ?
                     <div className={classes.row}>
-                        <TextField id="standard-basic"
-                            label={label || ""}
+                        <input type="text" className="form-control" 
+                            placeholder={label || ""} 
+                            aria-label={label || ""}  
+                            aria-describedby="inputGroup-sizing-sm"
                             value={inputValue}
-                            onChange={e => setInputValue(e.target.value)}
-                        />
+                            onChange={e => setInputValue(e.target.value)}/>
+
                         
                         <IconButton onClick={save}>
                             <DoneIcon />

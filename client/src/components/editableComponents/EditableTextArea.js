@@ -43,8 +43,8 @@ function EditableInputText({ value, onSave, label, fontSize }) {
             {
                 (edit) ?
                     <div className={classes.col}>
-                        <TextareaAutosize id="standard-basic"
-                            label={label || ""}
+                        <textarea 
+                            className="form-control"
                             value={inputValue}
                             onChange={e => setInputValue(e.target.value)}
                         />

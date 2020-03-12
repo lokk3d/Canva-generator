@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 
 import EditableInputText from "../editableComponents/EditableInputText"
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import AddIcon from '@material-ui/icons/Add';
 import IconButton from "@material-ui/core/IconButton"
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import { List, ListItem } from "@material-ui/core"
@@ -75,13 +75,13 @@ function ComponentWrapper({
             setItemsList(
                 component.items.map(item => {
                     return (
-                        <ListItem key={item._id} style={{ padding: "0px" }}>
+                        <div key={item._id} style={{ padding: "0px" }}>
                             <Item
                                 item={item}
                                 onUpdate={(e) => replaceUpdatedItem(e)}
                                 onDelete={(id) => deleteItem(id)}
                             />
-                        </ListItem>
+                        </div>
                     )
                 })
             )
@@ -113,15 +113,25 @@ function ComponentWrapper({
                
             </div>
 
-            <List>
+            <div>
                 {itemsList}
-            </List>
-
-            <IconButton
-                onClick={() => addItem()}
-                className={classes.addBox}>
-                <AddCircleOutlineIcon />
-            </IconButton>
+            </div>
+            
+            <div
+            style={{display:"flex", width:"100%", justifyContent:"flex-end"}}>
+                <button
+                    style={{
+                        backgroundColor:"transparent", 
+                        outline:"none", 
+                        border:"none",
+                        margin:3
+                    }}
+                    onClick={() => addItem()}
+                >
+                    <AddIcon htmlColor="rgba(0,0,0,0.5)"/>
+                </button>
+            </div>
+          
 
         </div>
     )

@@ -56,7 +56,7 @@ function Canva({
         setComponentsList(
             components.map(item => {
                 return (
-                    <ListItem key={item._id} className={classes.listItem}>
+                    <div key={item._id} className={classes.listItem}>
 
                         <ComponentWrapper 
                             component={{ title: item.title, _id: item._id, items: item.items }} 
@@ -64,7 +64,7 @@ function Canva({
                             onUpdate={e => replaceUpdatedComponent(e) }
                         />
 
-                    </ListItem>
+                    </div>
                 )
             })
         )
@@ -76,9 +76,9 @@ function Canva({
             <div className={classes.box}>
                 {
                     (components.length > 0) ?
-                        <List className={classes.list}>
+                        <div className="d-flex flex-row flex-wrap">
                             {componentsList}
-                        </List>
+                        </div>
                         :
                         <EmptyBox label="Aggiungi una board alla canva"/>
                 }
