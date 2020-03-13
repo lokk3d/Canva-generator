@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Avatar, List, ListItem, Button, IconButton } from "@material-ui/core"
+import { IconButton } from "@material-ui/core"
 import { makeStyles } from '@material-ui/core/styles';
 import { deepOrange } from '@material-ui/core/colors';
 import { useDispatch, useSelector } from "react-redux"
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import NewCanva from "./NewCanva";
-import { createNewCanva, deleteCanva, fetchCanvas } from "./canvaListReducer"
+import { createNewCanvas, deleteCanvas, fetchCanvases } from "./canvaListReducer"
 import { useHistory } from "react-router-dom"
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import EmptyBox from "../shared/EmptyBox";
 import User from "../user/User"
 import { fetchUserData } from "../user/userReducer";
@@ -49,27 +48,27 @@ function Home(props) {
 
     const dispatch = useDispatch()
 
-    const canvas = useSelector(state => state.canvas)
+    const canvases = useSelector(state => state.canvases)
     const user = useSelector(state => state.user)
 
     const [canvasList, setCanvasList] = useState()
 
     const [openCanva, setOpenCanva] = useState(false)
 
-    const createCanva = (canvaTitle) => {
-        dispatch(createNewCanva(canvaTitle))
+    const createCanvas = (canvaTitle) => {
+        dispatch(createNewCanvas(canvaTitle))
     }
 
     useEffect(() => {
-        dispatch(fetchCanvas())
+        dispatch(fetchCanvases())
         dispatch(fetchUserData())
     }, [])
 
 
     useEffect(() => {
-        if (Array.isArray(canvas.data)) {
+        if (Array.isArray(canvases.data)) {
             setCanvasList(
-                canvas.data.map(item => {
+                canvases.data.map(item => {
                     return (
                         <a
                             key={item._id}
@@ -80,7 +79,7 @@ function Home(props) {
                             onClick={() => history.push("/canvas/" + item._id)}
                             >{item.title}</div>
                             <IconButton style={{ padding: 5, marginLeft: 20 }}
-                                onClick={() => dispatch(deleteCanva(item._id))}>
+                                onClick={() => dispatch(deleteCanvas(item._id))}>
                                 <DeleteOutlineIcon />
                             </IconButton>
 
@@ -92,7 +91,7 @@ function Home(props) {
             )
         }
 
-    }, [canvas])
+    }, [canvases])
 
     return (
         <div className={classes.main}>
@@ -104,14 +103,24 @@ function Home(props) {
 
             <div className={classes.box} >
                 {
-                    (canvas.data.length > 0) ?
-                        <div className="list-group">
-                            {canvasList}
+                    canvases.fetched?
+                    <div>{
+                        (canvases.data.length > 0) ?
+                            <div className="list-group">
+                                {canvasList}
+                            </div>
+                            :
+                            <EmptyBox label="Crea una canvas per continuare" />
+    
+                    }</div>
+                    :
+                    <div class="text-center">
+                        <div class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
                         </div>
-                        :
-                        <EmptyBox label="Crea una canvas per continuare" />
-
+                    </div>
                 }
+               
 
             </div>
 
@@ -124,7 +133,7 @@ function Home(props) {
             </button>
 
             <NewCanva
-                onSave={(e) => createCanva(e)}
+                onSave={(e) => createCanvas(e)}
                 open={openCanva}
                 onClose={() => setOpenCanva(false)}
             />

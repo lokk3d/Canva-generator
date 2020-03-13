@@ -19,3 +19,60 @@ content-type: application/json
         { "title":"Revenue Streams"}
     ]
 }
+###
+
+POST http://localhost:5000/api/templates/add
+content-type: application/json
+
+{
+    "title": "Lean Canvas",
+    "components": [
+        { "title":"Problema"},
+        { "title":"Solution"},
+        { "title":"Key Metrics"},
+        { "title":"Unique Value Proposition"},
+        { "title":"Unfair Advantage"},
+        { "title":"Channels"},
+        { "title":"Customer Segments"},
+        { "title":"Cost Structure"},
+        { "title":"Revenue Streams"}
+    ]
+}
+
+###
+
+POST http://localhost:5000/api/templates/add
+content-type: application/json
+
+{
+    "title": "SWOT Analysis",
+    "components": [
+        { "title":"Punti di forza"},
+        { "title":"Punti deboli"},
+        { "title":"Opportunità"},
+        { "title":"Minacce"}
+    ]
+}
+
+###
+
+POST http://localhost:5000/api/templates/add
+content-type: application/json
+
+{
+    "title": "The Startup Canvas",
+    "components": [
+        { "title":"Il Problema"},
+        { "title":"Sviluppo del mercato"},
+        { "title":"La Produzione di valore"},
+        { "title":"Le Ipotesi fiduciarie"},
+        { "title":"Il Modello di business"},
+        { "title":"Marketing"},
+        { "title":"IlPiano finanziario"},
+        { "title":"Proprietà intellettuale"},
+        { "title":"Il Team"},
+        { "title":"L'Operatività"},
+        { "title":"La Trazione"},
+        { "title":"La Raccola di fondi"}
+    ]
+}

@@ -5,8 +5,16 @@ import EditableInputText from "../editableComponents/EditableInputText"
 import AddIcon from '@material-ui/icons/Add';
 import IconButton from "@material-ui/core/IconButton"
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
-import { List, ListItem } from "@material-ui/core"
-import Item from "./Item";
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';import Item from "./Item";
+
+
+const initialState = {
+    mouseX: null,
+    mouseY: null,
+};
+
+
 const useStyles = makeStyles({
     box: {
         border: "1px solid #afafaf",
@@ -89,29 +97,30 @@ function ComponentWrapper({
 
     }, [component])
 
+
+    const handleClick = event => {
+        event.preventDefault();
+        setState({
+            mouseX: event.clientX - 2,
+            mouseY: event.clientY - 4,
+        });
+    };
+    const [state, setState] = React.useState(initialState);
+    const handleClose = () => {
+        setState(initialState);
+    };
+
     return (
-        <div className={classes.box}>
-            <div className={classes.row}
-
-                onMouseLeave={() => setShowDelete(false)}
-                onMouseEnter={() => setShowDelete(true)}
-
-            >
-                <EditableInputText
-                    value={component.title}
-                    onSave={(e) => update("title", e)}
-                    fontSize={16}
-                />
-                {
-                    showDelete?
-                    <IconButton onClick={() => onDelete(component._id)}>
-                        <DeleteOutlineIcon />
-                    </IconButton>
-                    :
-                    null
-                }
-               
-            </div>
+        <div className={classes.box}
+        onContextMenu={handleClick} 
+        >
+      
+            <EditableInputText
+                value={component.title}
+                onSave={(e) => update("title", e)}
+                fontSize={16}
+            />
+            
 
             <div>
                 {itemsList}
@@ -132,6 +141,23 @@ function ComponentWrapper({
                 </button>
             </div>
           
+
+
+            <Menu
+                keepMounted
+                open={state.mouseY !== null}
+                onClose={handleClose}
+                anchorReference="anchorPosition"
+                anchorPosition={
+                    state.mouseY !== null && state.mouseX !== null
+                        ? { top: state.mouseY, left: state.mouseX }
+                        : undefined
+                }
+            >
+                <MenuItem onClick={() => onDelete(component._id)}>Delete</MenuItem>
+                
+            </Menu>
+
 
         </div>
     )

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const canvaSchema = new Schema({
+const canvasSchema = new Schema({
     author: {
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'User',
@@ -32,6 +32,6 @@ const canvaSchema = new Schema({
     timestamps: true,
 })
 
-const Canva = mongoose.model("Canva", canvaSchema);
+const Canvas = mongoose.model("Canvas", canvasSchema);
 
-module.exports = Canva; 
+module.exports = Canvas; 

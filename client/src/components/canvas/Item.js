@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import EditableInputText from "../editableComponents/EditableInputText"
 import EditableTextArea from "../editableComponents/EditableTextArea"
 import ItemColorPicker from "./ItemColorPicker"
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import { useSelector } from "react-redux";
 
 const initialState = {
     mouseX: null,
@@ -24,6 +25,27 @@ function Item({
     const [state, setState] = React.useState(initialState);
     const [colorPickerOpen, setColorPickerOpen] = React.useState(false);
 
+    const [showDescription, setShowDescription] = useState(false)
+
+    useEffect(()=>{
+        if(item.description !== "..."){
+            setShowDescription(true)
+        }
+    },[item])
+
+    const mouseEnter = ()=>{
+        if(item.description === "..."){
+            setShowDescription(true)
+        }
+    }
+
+    const mouseLeave =() => {
+        if(item.description === "..."){
+            setShowDescription(false)
+        }
+    }
+
+
 
     const handleClick = event => {
         event.preventDefault();
@@ -37,12 +59,17 @@ function Item({
         setState(initialState);
     };
 
+    
+
     return (
         <div style={{
             ...styles.container,
             backgroundColor: item.bgColor || "#ffffff"
         }}
             onContextMenu={handleClick} 
+
+            onMouseEnter={mouseEnter}
+            onMouseLeave={mouseLeave}
         >
 
             <div style={styles.row}>
@@ -54,10 +81,21 @@ function Item({
                
             </div>
 
-            <EditableTextArea
-                value={item.description}
-                onSave={(e) => update("description", e)}
-            />
+            {
+                showDescription?
+                <EditableTextArea
+                    value={item.description}
+                    onSave={(e) => {
+                        if(e.trim() === "")
+                            update("description", "...")
+                        else
+                            update("description", e)
+                    }}
+                />
+                :
+                null
+            }
+            
 
             <Menu
                 keepMounted

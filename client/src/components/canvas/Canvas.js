@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-function Canva({
+function Canvas({
     components = [],
     onUpdate = (obj)=>{console.log(obj)}
 }) {
@@ -70,22 +70,18 @@ function Canva({
     }, [components])
 
     return (
-        <React.Fragment>
+        <div className={classes.box} >
+            {
+                (components.length > 0) ?
+                    <div className="d-flex flex-row flex-wrap  justify-content-center">
+                        {componentsList}
+                    </div>
+                    :
+                    <EmptyBox label="Aggiungi una board alla canvas"/>
+            }
 
-            <div className={classes.box}>
-                {
-                    (components.length > 0) ?
-                        <div className="d-flex flex-row flex-wrap">
-                            {componentsList}
-                        </div>
-                        :
-                        <EmptyBox label="Aggiungi una board alla canva"/>
-                }
+        </div>
 
-            </div>
-
-
-        </React.Fragment>
     )
 }
-export default Canva    
+export default Canvas  

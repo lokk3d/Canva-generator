@@ -48,8 +48,8 @@ app.use("/api/admin",middleware.checkToken, adminRouter);
 const userRouter = require("./routes/user"); 
 app.use("/api/user", middleware.checkToken, userRouter);
 
-const canvaRouter = require("./routes/canva"); 
-app.use("/api/canvas", middleware.checkToken, canvaRouter);
+const canvasRouter = require("./routes/canvas"); 
+app.use("/api/canvas", middleware.checkToken, canvasRouter);
 
 const templateRouter = require("./routes/template"); 
 app.use("/api/templates", templateRouter);

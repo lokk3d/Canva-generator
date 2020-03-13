@@ -1,7 +1,7 @@
 import axios from "axios"
-import { fetchCanvas } from "../homePage/canvaListReducer"
 
 const initialState = {
+    firstLoading:true,
     fetched:false,
     fetching:false,
     error: "",
@@ -20,13 +20,14 @@ const initialState = {
 const FETCH_CANVAS_PENDING = "FETCH_CANVAS_PENDING"
 const FETCH_CANVAS_FULFILLED = "FETCH_CANVAS_FULFILLED"
 const FETCH_CANVAS_REJECTED = "FETCH_CANVAS_REJECTED"
-export const fetchCanva = (id) => {
+export const fetchCanvas = (id) => {
     return (dispatch, getState) => {
         dispatch({type:FETCH_CANVAS_PENDING})
 
         axios.get('/api/canvas/'+id,
             {headers: { authorization: "Bearer " + getState().auth.token }})
           .then((res) => {
+            console.log(JSON.parse(JSON.stringify(res.data)))
             dispatch({type:FETCH_CANVAS_FULFILLED, payload:res.data})
           })
           .catch((err) => {
@@ -39,7 +40,7 @@ export const fetchCanva = (id) => {
 const UPDATE_CANVAS_PENDING = "UPDATE_CANVAS_PENDING"
 const UPDATE_CANVAS_FULFILLED = "UPDATE_CANVAS_FULFILLED"
 const UPDATE_CANVAS_REJECTED = "UPDATE_CANVAS_REJECTED"
-export const updateCanva = (obj) => {
+export const updateCanvas = (obj) => {
     return (dispatch, getState) => {
         dispatch({type:UPDATE_CANVAS_PENDING})
 
@@ -48,14 +49,14 @@ export const updateCanva = (obj) => {
             title:obj.title, 
             components: obj.components || []}
 
-        console.log(data)
+        console.log(JSON.parse(JSON.stringify(data)))
 
         axios.post('/api/canvas/update',data,
             {headers: { authorization: "Bearer " + getState().auth.token }})
           .then((res) => {
             dispatch({type:UPDATE_CANVAS_FULFILLED, payload:res.data})
  
-            dispatch(fetchCanva(data._id))
+            dispatch(fetchCanvas(data._id))
           })
           .catch((err) => {
             dispatch({type:UPDATE_CANVAS_REJECTED, payload:err})
@@ -64,14 +65,14 @@ export const updateCanva = (obj) => {
 }
 
 
-export const canvaReducer = function(state = initialState, action){
+export const canvasReducer = function(state = initialState, action){
     switch(action.type){
         case FETCH_CANVAS_PENDING:
             return {...state, fetched:false, fetching:true, error:""}
         case FETCH_CANVAS_FULFILLED:
-            return {...state, fetched:true, fetching:false, error:"", data:action.payload}
+            return {...state, fetched:true, fetching:false, error:"", data:action.payload, firstLoading:false}
         case FETCH_CANVAS_REJECTED:
-            return {...state, fetched:true, fetching:true, error:action.payload.message}
+            return {...state, fetched:false, fetching:true, error:action.payload.message}
 
         case UPDATE_CANVAS_PENDING:
             return {...state, update:{ doing: true, done:false, error:""}}

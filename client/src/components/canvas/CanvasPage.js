@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import EditableInputText from "../editableComponents/EditableInputText";
 import { useDispatch, useSelector } from "react-redux"
-import { updateCanva, fetchCanva } from "./canvaReducer"
+import { updateCanvas, fetchCanvas } from "./canvasReducer"
 import { makeStyles } from '@material-ui/core/styles';
-import Canva from "./Canva"
+import Canvas from "./Canvas"
 import TemplateDialogList from "../canvasTemplate/TemplateDialogList"
 import {fetchTemplates} from "../canvasTemplate/templateReducer"
 import domtoimage from 'dom-to-image';
-
+import PanoramaIcon from '@material-ui/icons/Panorama';
 
 const useStyles = makeStyles(theme => ({
     col:{
@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
 function CanvasPage(props) {
 
     const canvasId = "canvasId"
-    const canva = useSelector(state => state.canva)
+    const canvas = useSelector(state => state.canvas)
 
     const templates = useSelector(state => state.templates)
     const [templatesOpen, setTemplatesOpen] = useState(false)
@@ -32,24 +32,34 @@ function CanvasPage(props) {
     const id = props.match.params.id
 
     useEffect(() => {
-        dispatch(fetchCanva(id))
+        dispatch(fetchCanvas(id))
         dispatch(fetchTemplates())
 
     }, [])
 
-    const updateCanvaTitle = (title) => {
-        dispatch(updateCanva({ ...canva.data, title: title }))
+    useEffect(()=>{
+        console.log("Canvas aggiornato...")
+        console.log(JSON.parse(JSON.stringify(canvas)))
+    },[canvas])
+
+    const updateCanvasTitle = (title) => {
+        dispatch(updateCanvas({ ...canvas.data, title: title }))
     }
 
     const addNewWrapper = () => {
-        dispatch(updateCanva({ ...canva.data, 
-            components: [...canva.data.components, 
+        dispatch(updateCanvas({ ...canvas.data, 
+            components: [...canvas.data.components, 
             { title: "Untitled Board"}] }))
     }
 
-    const updateCanvaComponents = (components) =>{
-        console.log(components)
-        dispatch(updateCanva({...canva.data, components:components}))
+    const updateCanvasComponents = (components) =>{
+        console.log("Componenti...")
+        console.log(JSON.parse(JSON.stringify(components)))
+
+        console.log("Total canvas")
+        console.log(JSON.parse(JSON.stringify(canvas)))
+
+        dispatch(updateCanvas({...canvas.data, components:components}))
     }
 
 
@@ -78,17 +88,30 @@ function CanvasPage(props) {
                 style={{paddingBottom:20}}
             >
                 <EditableInputText
-                    value={canva.data.title || ""}
-                    onSave={(e) => updateCanvaTitle(e)}
+                    value={canvas.data.title || ""}
+                    onSave={(e) => updateCanvasTitle(e)}
                     fontSize={26} />
 
-                <div style={{display:"block", marginLeft:"5%", marginRight:"5%", maxWidth:1600}} >
-                    <Canva 
-                    components={canva.data.components}
-                    onUpdate={(components)=>{
-                        updateCanvaComponents(components)
-                    }}
-                    />
+                <div 
+                id="canvas-body"
+                style={{display:"block", marginLeft:"5%", marginRight:"5%", maxWidth:1600}} >
+                    {
+                        (!canvas.firstLoading)?
+                            <Canvas 
+                            components={canvas.data.components}
+                            onUpdate={(components)=>{
+                                updateCanvasComponents(components)
+                            }}
+                            />
+                        :
+                        <div class="text-center">
+                            <div class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                    }
+                   
+
                     <div style={{width:"100%", textAlign:"center"}}>{copyright}</div>
                     
                 </div>
@@ -98,7 +121,19 @@ function CanvasPage(props) {
                 type="button" class="btn btn-primary"
                 style={{ marginTop: 30 }}
                 onClick={()=>addNewWrapper()}>
-                Aggiungi board alla canva
+                    
+                    <i>
+                    {
+                        canvas.update.doing?
+                        <div class="spinner-border text-light  spinner-border-sm" role="status" style={{marginRight:10}}>
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        :
+                        null
+                    }
+
+                    </i>
+                Aggiungi board alla canvas
             </button>
 
             <button
@@ -112,6 +147,9 @@ function CanvasPage(props) {
                 style={{marginTop:30}}
                 type="button" class="btn btn-dark"
                 onClick={downloadImage}>
+                    <i style={{marginRight:10}}>
+                        <PanoramaIcon /> 
+                    </i>
                 Esporta immagine
             </button>
 
@@ -119,9 +157,9 @@ function CanvasPage(props) {
                 templates={templates}
                 onClose={()=>setTemplatesOpen(false)}
                 open={templatesOpen}
-                onSave={(template)=>{
+                onSave={(components)=>{
                     setTemplatesOpen(false)
-                    updateCanvaComponents(template)
+                    updateCanvasComponents(components)
                 }}
             />
 
