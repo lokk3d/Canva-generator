@@ -26,7 +26,7 @@ function NewCanva({
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
         >
-            <DialogTitle id="alert-dialog-title">{"Titolo della Canva"}</DialogTitle>
+            <DialogTitle id="alert-dialog-title">{"Titolo della Canvas"}</DialogTitle>
             <DialogContent>
                 <div class="input-group mb-3">
                  
