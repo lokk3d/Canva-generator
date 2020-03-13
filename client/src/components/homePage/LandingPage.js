@@ -79,13 +79,20 @@ function LandingPage() {
             <Typography className={classes.heading}>Come funziona?</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <Typography>
+            <div>
+            <iframe
+            src="https://www.youtube.com/embed/3XhBCOxjyG0" 
+            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>
+            <p>
               Questo tool ti permette di creare le tue canvas personalizzate.
               Puoi infatti aggiungere/modificare le varie board.
               In ogni board puoi aggiungere più post-it dei quali puoi modificare anche il colore di sfondo.
               Se non hai esigenze particolari puoi utilizzare i template già pronti :) 
               P.s. questa è una versione alpha. Se hai qualche suggetimento o qualche bug da segnalare #escilo
-            </Typography>
+            </p>
+            </div>
+           
           </ExpansionPanelDetails>
         </ExpansionPanel>
         
