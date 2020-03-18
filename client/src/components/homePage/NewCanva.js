@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import {  Button } from "@material-ui/core";
+
+import Input from "../ui/input/Input"
+import Title from "../ui/typography/Title"
+import Container from "../ui/container/Container"
+import Button from "../ui/button/Button"
+import MyDialog from "../ui/modal/MyDialog"
+import MyDialogContent from "../ui/modal/MyDialogContent"
 
 function NewCanva({
     onSave,
@@ -15,7 +17,7 @@ function NewCanva({
 
     return (
 
-        <Dialog
+        <MyDialog
             open={open}
             onClose={
                 () => {
@@ -26,38 +28,43 @@ function NewCanva({
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
         >
-            <DialogTitle id="alert-dialog-title">{"Titolo della Canvas"}</DialogTitle>
-            <DialogContent>
-                <div class="input-group mb-3">
-                 
-                    <input
+            <MyDialogContent>
+                <Container >
+                    <Title tag="h3">Titolo della Canvas</Title>
+
+                    <Input
                         type="text" class="form-control"
                         placeholder="Titolo" aria-label="Titolo"
                         aria-describedby="basic-addon1"
                         value={value}
                         onChange={(e) => setValue(e.target.value)} />
-                </div>
-              
-            </DialogContent>
-            <DialogActions>
-                <Button onClick={
-                    () => {
-                        onClose();
+                </Container>
+
+                <Container style={{ margin: 20 }}>
+                    <Button onClick={
+                        () => {
+                            onClose();
+                            setValue("")
+                        }
+                    } color="primary"
+                        type="button" class="btn btn-secondary"
+                        style={{ marginRight: 20 }}>
+                        Annulla
+                </Button>
+                    <Button onClick={() => {
+                        onSave(value)
                         setValue("")
-                    }
-                } color="primary">
-                    Annulla
+                        onClose()
+                    }}
+                        type="button" class="btn btn-primary"
+                    >
+                        Salva
                 </Button>
-                <Button onClick={() => {
-                    onSave(value)
-                    setValue("")
-                    onClose()
-                }}
-                    color="primary">
-                    Salva
-                </Button>
-            </DialogActions>
-        </Dialog>
+                </Container>
+
+            </MyDialogContent>
+
+        </MyDialog>
     )
 }
 

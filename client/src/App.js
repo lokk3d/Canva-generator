@@ -11,16 +11,16 @@ import {
 
 import { useDispatch, useSelector } from "react-redux"
 
-import Login from './components/authPage/Login';
-import Register from './components/authPage/Register';
+import Login from './components/pages/Login';
+import Register from './components/pages/Register';
 import NoLoggedNavBar from './components/navBar/NoLoggedNavBar';
 import LoggedNavBar from './components/navBar/LoggedNavBar';
 
-import Home from './components/homePage/Home';
+import Home from './components/pages/Home';
 import { loadToken } from './components/authPage/authReducer';
-import CanvasPage from './components/canvas/CanvasPage';
-import ManualRedirectLogin from './components/ManualRedirectLogin';
-import LandingPage from './components/homePage/LandingPage';
+import CanvasPage from './components/pages/CanvasPage';
+import ManualRedirectLogin from './components/pages/ManualRedirectLogin';
+import LandingPage from './components/pages/LandingPage';
 import NavBar from './components/navBar/NavBar';
 
 /*

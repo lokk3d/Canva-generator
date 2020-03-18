@@ -18,7 +18,8 @@ const initialState = {
 const useStyles = makeStyles({
     box: {
         border: "1px solid #afafaf",
-        width: "300px"
+        width: "300px",
+        height:"100%"
     },
     row: {
         display: "flex",

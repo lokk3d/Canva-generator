@@ -6,9 +6,9 @@ import thunk from 'redux-thunk'
 import { authReducer } from "../authPage/authReducer"
 import { appInfoReducer } from "./appInfoReducer"
 import { canvasListReducer } from "../homePage/canvaListReducer"
-import { canvasReducer } from "../canvas/canvasReducer"
-import { userReducer } from "../user/userReducer"
-import { templateReducer } from "../canvasTemplate/templateReducer"
+import { canvasReducer } from "../features/canvas/canvasReducer"
+import { userReducer } from "../features/user/userReducer"
+import { templateReducer } from "../features/canvasTemplate/templateReducer"
 
 const reducers = combineReducers({
     auth: authReducer,

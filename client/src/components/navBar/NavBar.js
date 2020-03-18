@@ -1,28 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom"
 
+import Container from "../ui/container/Container"
+import Button from "../ui/button/Button"
+import Span from "../ui/Span"
+import Anchor from "../ui/Anchor"
+import Nav from "../ui/Nav"
+
 
 function NavBar(props) {
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a className="navbar-brand" >
+    <Nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <Anchor className="navbar-brand" >
         <Link to="/" style={{color:"#ffffff", textDecoration:"none"}}>
           Canvas Generator
         </Link>
-        </a>
-      <button
+        </Anchor>
+      <Button
         className="navbar-toggler" type="button"
         data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false"
         aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-      </button>
+        <Span className="navbar-toggler-icon"></Span>
+      </Button>
 
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+      <Container className="collapse navbar-collapse" id="navbarSupportedContent">
         {props.children}
-      </div>
-    </nav>
+      </Container>
+    </Nav>
 
   );
 }

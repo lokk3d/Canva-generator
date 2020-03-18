@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Button, ListItem, List } from "@material-ui/core"
 import { makeStyles } from '@material-ui/core/styles';
 import ComponentWrapper from "./ComponentWrapper"
-import EmptyBox from "../shared/EmptyBox";
+import EmptyBox from "../EmptyBox";
 
 
 const useStyles = makeStyles(theme => ({
@@ -20,9 +20,10 @@ const useStyles = makeStyles(theme => ({
     },
     listItem:{
         width:"auto",
-        height:"100%",
+        height:"auto",
         padding:0
-    }
+    },
+
 
 }));
 

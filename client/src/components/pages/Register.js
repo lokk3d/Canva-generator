@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useDispatch, useSelector } from "react-redux"
 
-import { signUp } from "./authReducer"
+import { signUp } from "../authPage/authReducer"
 import { useHistory } from "react-router-dom"
 function Copyright() {
     return (

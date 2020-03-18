@@ -1,20 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom"
+import List from "../ui/list/List"
+import ListItem from "../ui/list/ListItem"
 
 function NoLoggedNavBar(props) {
   return (
-    <ul className="navbar-nav ml-auto">
-      <li className="nav-item active">
-        <Link className="nav-link" to="/login">
+    <List horizontal right className="navbar-nav ml-auto">
+      <ListItem className="nav-item active">
+        <Link className="nav-link" to="/login" style={{color:"#fff"}}>
           Accedi
             </Link>
-      </li>
-      <li className="nav-item">
-        <Link className="nav-link" to="/signup">
+      </ListItem>
+      <ListItem className="nav-item">
+        <Link className="nav-link" to="/signup" style={{color:"#fff"}}>
           Iscriviti
             </Link>
-      </li>
-    </ul>
+      </ListItem>
+    </List>
   );
 }
 

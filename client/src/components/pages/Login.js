@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from "react-redux"
 
-import { login } from "./authReducer"
+import { login } from "../authPage/authReducer"
 import { useHistory } from "react-router-dom"
 import bg from "../../assets/bg.jpg"
 

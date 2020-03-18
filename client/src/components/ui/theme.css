@@ -1,0 +1,46 @@
+:root {
+    --white: white;
+
+    --light-gray-t: rgba(0,0,0,0.3);
+    --gray-t: rgba(0,0,0,0.5);
+    --dark-gray-t: rgba(0,0,0,0.7);
+
+    --default-padding: 8px;
+    --default-margin: 10px;
+
+  }
+
+
+
+.paper-default {
+    background-color: var(--white);
+    padding: var(--default-padding);
+    margin: var(--default-margin);
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px var(--light-gray-t);
+
+}
+
+.list {
+  display:flex;
+  flex-direction: column;
+  width:100%;
+}
+
+.list-horizontal {
+  flex-direction: row;
+}
+
+.list-right {
+  justify-content: flex-end;
+}
+
+
+.avatar {
+  border-radius: 50%;
+  color: var(--white);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
